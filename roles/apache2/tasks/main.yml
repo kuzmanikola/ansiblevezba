@@ -1,0 +1,21 @@
+---
+- name: 1. install Apache
+  yum: 
+    name: httpd 
+    state: latest
+
+- name: 2.Installing PHP
+  yum:
+    name: 
+      - php 
+      - php-mysql 
+    state: latest 
+
+- name: 3. start Apache
+  service: 
+    name: httpd 
+    enabled: yes
+    state: started 
+    
+- name: 4. install Hello World PHP script
+  copy: src=index.php dest=/var/www/html/index.php 
